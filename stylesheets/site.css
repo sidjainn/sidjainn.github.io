@@ -1,0 +1,57 @@
+.mdl-layout__header img {
+  height: 60%;
+  padding-right: 30px;
+  position: relative;
+  margin-left: -62px; }
+
+.head {
+  height: 60px;
+  width: 100%; }
+
+.left {
+  margin-bottom: 32px; }
+
+span {
+  font-weight: 600 !important; }
+
+.image-cropper {
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto;
+  display: inline-block; }
+
+@media (max-width: 400px) {
+  .image-cropper {
+    width: 140px;
+    height: 140px; } }
+.social-media .image-cropper {
+  width: 40px;
+  height: 40px; }
+
+img.rounded {
+  margin: 0 auto;
+  height: 100%;
+  width: auto; }
+
+.right {
+  margin: auto;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300;
+  line-height: 26px;
+  font-size: 16px; }
+
+.right .heading {
+  font-size: 24px;
+  display: inline;
+  color: #424242; }
+
+.name {
+  margin-bottom: 8px; }
+
+.email {
+  margin-top: 8px; }
+
+.center-align {
+  text-align: center; }

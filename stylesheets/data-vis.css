@@ -1,0 +1,27 @@
+.top-padding {
+  padding-top: 32px; }
+
+.demo-card-wide.mdl-card {
+  width: 100%;
+  max-width: none;
+  height: auto; }
+
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url("../images/siddharth.jpg") center/cover; }
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff; }
+
+.demo-card-wide .mdl-card__supporting-text {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 14px;
+  line-height: 20px; }
+
+.titleText {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 36px;
+  color: #323232; }
