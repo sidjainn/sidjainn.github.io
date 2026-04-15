@@ -186,7 +186,6 @@ a:hover {
     transform: translate(-50%, 0);
   }
 }
-
 .favorite-tools-row {
   display: flex;
   flex-wrap: nowrap;
