@@ -250,3 +250,86 @@ a:hover {
     font-size: 13px;
   }
 }
+
+.auroville-carousel {
+  margin-top: 8px;
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid #ad1457;
+  font-style: italic;
+  color: #555;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.auroville-quotes {
+  display: grid;
+  overflow: hidden;
+}
+
+.auroville-quote {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.auroville-quote.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.auroville-quote.is-prev {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.auroville-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 0;
+}
+
+.auroville-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #d0a9bd;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.auroville-dot:hover {
+  background: #c98aaa;
+}
+
+.auroville-dot.is-active {
+  background: #ad1457;
+  transform: scale(1.25);
+}
+
+.auroville-dot:focus {
+  outline: 2px solid #ad1457;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auroville-quotes {
+    display: block;
+    overflow: visible;
+  }
+  .auroville-quote {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    margin-bottom: 6px;
+    pointer-events: auto;
+  }
+  .auroville-dots {
+    display: none;
+  }
+}
