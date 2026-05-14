@@ -1,4 +1,36 @@
 (function () {
+  var media = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+  function hasOverride() {
+    try { return !!localStorage.getItem('theme'); } catch (e) { return false; }
+  }
+
+  if (media && media.addEventListener) {
+    media.addEventListener('change', function (e) {
+      if (hasOverride()) return;
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    });
+  }
+
+  var toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', function () {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    var systemDark = media && media.matches;
+    var systemTheme = systemDark ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+      if (next === systemTheme) {
+        localStorage.removeItem('theme');
+      } else {
+        localStorage.setItem('theme', next);
+      }
+    } catch (e) {}
+  });
+})();
+
+(function () {
   var carousel = document.querySelector('.auroville-carousel');
   if (!carousel) return;
 
