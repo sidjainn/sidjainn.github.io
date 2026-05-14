@@ -36,13 +36,63 @@
   color-scheme: dark;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
   background: var(--bg);
   color: var(--text);
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 :root[data-theme="dark"] img.rounded {
   filter: brightness(0.95);
+}
+
+.page {
+  width: 100%;
+  padding: 60px 20px 40px;
+}
+
+.layout {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.profile {
+  text-align: center;
+}
+
+.content {
+  min-width: 0;
+}
+
+@media (max-width: 840px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .profile {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 32px 16px 32px;
+  }
 }
 
 .theme-toggle {
@@ -70,61 +120,45 @@ html, body {
   color: var(--accent);
 }
 
-.theme-toggle .material-icons {
-  font-size: 20px;
+.theme-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .theme-toggle .icon-dark { display: none; }
-:root[data-theme="dark"] .theme-toggle .icon-dark { display: inline; }
+:root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-light { display: none; }
-
-.mdl-layout__header img {
-  height: 60%;
-  padding-right: 30px;
-  position: relative;
-  margin-left: -62px; }
-
-.head {
-  height: 60px;
-  width: 100%; }
-
-.left {
-  margin-bottom: 32px; }
 
 .image-cropper {
   width: 160px;
   height: 160px;
   overflow: hidden;
   border-radius: 50%;
-  margin: auto;
-  display: inline-block; }
+  margin: 0 auto;
+  display: inline-block;
+}
 
 @media (max-width: 400px) {
   .image-cropper {
     width: 140px;
-    height: 140px; } }
-.social-media .image-cropper {
-  width: 40px;
-  height: 40px; }
+    height: 140px;
+  }
+}
 
 img.rounded {
   margin: 0 auto;
   height: 100%;
-  width: auto; }
+  width: auto;
+}
 
-.right {
-  margin: auto;
-  font-family: 'Roboto', sans-serif !important;
-  font-weight: 300;
-  line-height: 26px;
-  font-size: 16px; }
-
-.right .heading {
+.heading {
   font-size: 30px;
   line-height: 40px;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 10px; }
+  margin: 0 0 10px 0;
+}
 
 .education-line {
   color: var(--accent);
@@ -133,32 +167,37 @@ img.rounded {
   margin-bottom: 14px;
 }
 
+.content p {
+  margin: 0 0 12px 0;
+}
+
 .name {
   margin-top: 12px;
   margin-bottom: 6px;
   font-size: 19px;
   font-weight: 600;
-  letter-spacing: 1.2px; }
+  letter-spacing: 1.2px;
+}
 
 .title-line {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+}
 
 .email {
   margin-top: 8px;
   font-size: 14px;
-  line-height: 22px; }
-
-.center-align {
-  text-align: center; }
+  line-height: 22px;
+}
 
 .social-media {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px; }
+  gap: 14px;
+}
 
 .social-link {
   display: inline-flex;
@@ -183,36 +222,44 @@ img.rounded {
 }
 
 .section {
-  margin-top: 24px; }
+  margin-top: 24px;
+}
 
 .section-title {
   font-weight: 600;
   font-size: 16px;
   color: var(--accent);
-  margin-bottom: 10px; }
+  margin: 0 0 10px 0;
+}
 
 .section ul {
   margin: 0;
-  padding-left: 20px; }
+  padding-left: 20px;
+}
 
 .section li {
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+}
 
 .section p {
-  margin: 0; }
+  margin: 0;
+}
 
 .footer-cta {
   margin-top: 30px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+}
 
 a {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px; }
+  text-underline-offset: 2px;
+}
 
 a:hover {
-  color: var(--accent-hover); }
+  color: var(--accent-hover);
+}
 
 .sticky-tooltip {
   position: relative;
@@ -269,7 +316,6 @@ a:hover {
 
 @media (max-width: 640px) {
   .sticky-tooltip__content {
-    /* On mobile, pin tooltip to viewport to avoid clipping near edges. */
     position: fixed;
     left: 50%;
     right: auto;
@@ -285,6 +331,7 @@ a:hover {
     transform: translate(-50%, 0);
   }
 }
+
 .favorite-tools-row {
   display: flex;
   flex-wrap: nowrap;
@@ -321,28 +368,24 @@ a:hover {
 }
 
 @media (max-width: 840px) {
-  .right .heading {
+  .heading {
     font-size: 26px;
     line-height: 34px;
   }
 
-  .right {
+  body {
     font-size: 15px;
     line-height: 24px;
   }
 }
 
 @media (max-width: 480px) {
-  .head {
-    height: 24px;
-  }
-
   .name {
     font-size: 17px;
     letter-spacing: 0.8px;
   }
 
-  .right .heading {
+  .heading {
     font-size: 22px;
     line-height: 30px;
   }
