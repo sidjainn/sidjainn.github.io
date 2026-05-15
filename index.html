@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Siddharth — Founding PM &amp; AI Builder</title>
+    <title>Sid - Founding PM &amp; AI Builder</title>
     <meta name="description" content="Siddharth Jain — Founding PM and AI builder. 10+ years across product, design, data, and engineering. Currently building an AI recruiter at Expertia AI.">
 
     <meta property="og:type" content="website">
@@ -30,8 +30,9 @@
         } catch (e) {}
       })();
     </script>
-    <link href="/stylesheets/site.css" rel="stylesheet" />
-    <script src="/javascripts/site.js" defer></script>
+    <link href="/stylesheets/site.css?v=20260515i" rel="stylesheet" />
+    <script src="/javascripts/stories.js?v=20260515e" defer></script>
+    <script src="/javascripts/site.js?v=20260515e" defer></script>
   </head>
 
   <body>
@@ -47,9 +48,12 @@
     <main class="page">
       <div class="layout">
         <aside class="profile">
-          <div class="image-cropper">
-            <img src="images/profile.jpg" class="rounded" alt="Siddharth Jain" width="160" height="160" />
-          </div>
+          <button type="button" class="profile-story-trigger" id="profile-story-trigger" aria-label="View Siddharth's stories">
+            <span class="story-ring" aria-hidden="true"></span>
+            <span class="image-cropper">
+              <img src="images/profile.jpg" class="rounded" alt="Siddharth Jain" width="160" height="160" />
+            </span>
+          </button>
 
           <div class="name">SIDDHARTH JAIN</div>
           <div class="title-line">Product Manager | AI Builder</div>
@@ -69,7 +73,13 @@
 
           <div class="email">
             <a href="mailto:sidjainn@gmail.com">sidjainn@gmail.com</a><br>
-            <a href="tel:+918531828586">India (+91) 8531-828-586</a><br>
+            <a href="tel:+918531828586">(+91) 8531-828-586</a>
+            <a class="whatsapp-inline" href="https://wa.me/918531828586?text=Hey%20Siddharth" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+              <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" focusable="false">
+                <path fill="#25D366" d="M16 0C7.164 0 0 7.164 0 16c0 2.82.74 5.58 2.148 8.012L0 32l8.207-2.117A15.93 15.93 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0z"/>
+                <path fill="#fff" d="M23.47 19.37c-.4-.2-2.36-1.16-2.72-1.3-.36-.13-.62-.2-.88.2-.27.4-1.02 1.3-1.25 1.56-.23.26-.46.3-.86.1-.4-.2-1.68-.62-3.2-1.97-1.18-1.05-1.97-2.34-2.2-2.74-.23-.4-.02-.62.17-.82.18-.18.4-.46.6-.7.2-.23.27-.4.4-.66.13-.27.07-.5-.03-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.66-.88-.67h-.75c-.26 0-.7.1-1.06.5-.36.4-1.4 1.37-1.4 3.33s1.44 3.86 1.64 4.13c.2.27 2.83 4.32 6.86 6.06.96.4 1.7.66 2.28.84.96.3 1.83.26 2.52.16.77-.12 2.36-.96 2.7-1.9.33-.93.33-1.73.23-1.9-.1-.16-.36-.26-.76-.46z"/>
+              </svg>
+            </a><br>
             Bangalore, India
           </div>
         </aside>
@@ -94,10 +104,10 @@
             <h2 class="section-title">Featured</h2>
             <ul>
               <li>
-                An AI-assisted <a href="https://youtu.be/N4JE-jT3VMM" target="_blank" rel="noopener noreferrer">system of insights</a> from my daily journaling. <a href="https://github.com/sidjainn/daily-logs-sync" target="_blank" rel="noopener noreferrer">Implementation</a> entails backing up Google Docs journal entries to GitHub, LLM-tags them for mood/ people/ themes/ emotions, emails weekly flashbacks from past months, and streams events to PostHog for insight dashboards.
+                An AI-assisted <a href="https://youtu.be/N4JE-jT3VMM" target="_blank" rel="noopener noreferrer">system of insights</a> from my daily journaling. <a href="https://github.com/sidjainn/daily-logs-sync" target="_blank" rel="noopener noreferrer">Implementation notes</a>.
               </li>
               <li>
-                A <a href="https://github.com/sidjainn/ai-chief-of-staff" target="_blank" rel="noopener noreferrer">chief of staff</a> to solve for my daily use cases using Claude - <a href="https://www.linkedin.com/posts/siddharth-j_felt-compelled-to-share-this-note-after-a-activity-7449331760083132416-7J6x" target="_blank" rel="noopener noreferrer">weekly coaching</a>, researching and updating jobs as new context generates, shopping recommendations based on my preferences and taste, and triaging emails. Uses MCP + skills + hooks.
+                A <a href="https://github.com/sidjainn/ai-chief-of-staff" target="_blank" rel="noopener noreferrer">chief of staff</a> for my daily use cases - <a href="https://www.linkedin.com/posts/siddharth-j_felt-compelled-to-share-this-note-after-a-activity-7449331760083132416-7J6x" target="_blank" rel="noopener noreferrer">weekly coach</a>, assistants for jobs, shopping, emails. Uses MCP, skills, hooks.
               </li>
               <li>
                 sid's pod craft -
@@ -234,5 +244,27 @@
         </article>
       </div>
     </main>
+
+    <div class="stories-viewer" id="stories-viewer" role="dialog" aria-modal="true" aria-label="Stories" hidden>
+      <div class="stories-backdrop" data-story-close></div>
+      <div class="stories-frame">
+        <div class="stories-progress" id="stories-progress" aria-hidden="true"></div>
+        <header class="stories-header">
+          <div class="stories-author">
+            <span class="stories-author-avatar">
+              <img src="images/profile.jpg" alt="" />
+            </span>
+            <span class="stories-author-name">Siddharth</span>
+            <span class="stories-author-meta" id="stories-time"></span>
+          </div>
+          <button type="button" class="stories-close" data-story-close aria-label="Close stories">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          </button>
+        </header>
+        <div class="stories-stage" id="stories-stage"></div>
+        <button type="button" class="stories-tap stories-tap-prev" data-story-prev aria-label="Previous"></button>
+        <button type="button" class="stories-tap stories-tap-next" data-story-next aria-label="Next"></button>
+      </div>
+    </div>
   </body>
 </html>
