@@ -374,9 +374,8 @@ a:hover {
 .favorite-tool-logo {
   width: 18px;
   height: 18px;
-  border-radius: 3px;
+  border-radius: 4px;
   object-fit: contain;
-  background: #ffffff;
 }
 
 @media (max-width: 840px) {
