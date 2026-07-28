@@ -1,19 +1,19 @@
 :root {
-  --bg: #ffffff;
-  --text: #212121;
-  --muted: #757575;
+  --bg: #f5f0e6;
+  --text: #2b2722;
+  --muted: #756f64;
   --accent: #ad1457;
   --accent-hover: #6a1b4d;
-  --border: #e0e0e0;
-  --surface: #ffffff;
-  --tooltip-bg: #ffffff;
+  --border: #e0d8c7;
+  --surface: #fbf8f1;
+  --tooltip-bg: #fbf8f1;
   --tooltip-text: #333333;
-  --tooltip-shadow: rgba(0, 0, 0, 0.14);
-  --tooltip-image-border: #eeeeee;
-  --quote-text: #555555;
+  --tooltip-shadow: rgba(60, 50, 30, 0.14);
+  --tooltip-image-border: #e7dfce;
+  --quote-text: #5a544a;
   --dot: #d0a9bd;
   --dot-hover: #c98aaa;
-  --toggle-bg: #ffffff;
+  --toggle-bg: #fbf8f1;
   color-scheme: light;
 }
 
@@ -781,6 +781,108 @@ img.rounded {
   height: 100%;
   display: block;
   border: 0;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  margin: 14px 0 4px 0;
+}
+
+.site-nav a {
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+.site-nav a.is-active {
+  color: var(--accent);
+}
+
+.thinking-intro {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 14px 0;
+}
+
+.thinking-more {
+  margin: 12px 0 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.thinking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.thinking-table th,
+.thinking-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.thinking-table thead th {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border);
+}
+
+/* Stack into cards on mobile */
+@media (max-width: 600px) {
+  .thinking-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .thinking-table,
+  .thinking-table tbody,
+  .thinking-table tr,
+  .thinking-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .thinking-table tr {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 6px 0;
+    margin-bottom: 12px;
+  }
+
+  .thinking-table td {
+    border-bottom: none;
+    padding: 6px 14px;
+  }
+
+  .thinking-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
 }
 
 .footer-cta {
