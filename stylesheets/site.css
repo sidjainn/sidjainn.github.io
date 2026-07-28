@@ -728,6 +728,12 @@ img.rounded {
   margin: 0;
 }
 
+.section p + p,
+.section p + ul,
+.section ul + p {
+  margin-top: 10px;
+}
+
 .stat {
   display: inline-block;
   padding: 1px 8px;
