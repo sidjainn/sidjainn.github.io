@@ -469,3 +469,64 @@
     else if (ev.key === 'ArrowLeft') { go(idx - 1); }
   });
 })();
+
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.video-link[data-video]'));
+  if (links.length === 0) return;
+
+  var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!canHover) return;
+
+  var card = null;
+  var hideTimer = null;
+
+  function build(id) {
+    var el = document.createElement('div');
+    el.className = 'video-preview';
+    el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&mute=1&rel=0&modestbranding=1" title="Video preview" frameborder="0" ' +
+      'allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    el.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+    el.addEventListener('mouseleave', hide);
+    return el;
+  }
+
+  function place(link) {
+    var rect = link.getBoundingClientRect();
+    var width = card.offsetWidth;
+    var height = card.offsetHeight;
+    var left = rect.left + rect.width / 2 - width / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+    var top = rect.top - height - 10;
+    if (top < 8) top = rect.bottom + 10;
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
+  }
+
+  function show(link) {
+    clearTimeout(hideTimer);
+    hide();
+    card = build(link.getAttribute('data-video'));
+    document.body.appendChild(card);
+    place(link);
+    requestAnimationFrame(function () { if (card) card.classList.add('is-visible'); });
+  }
+
+  function hide() {
+    if (!card) return;
+    card.parentNode.removeChild(card);
+    card = null;
+  }
+
+  links.forEach(function (link) {
+    link.addEventListener('mouseenter', function () { show(link); });
+    link.addEventListener('mouseleave', function () {
+      hideTimer = setTimeout(hide, 200);
+    });
+    link.addEventListener('focus', function () { show(link); });
+    link.addEventListener('blur', hide);
+  });
+
+  window.addEventListener('scroll', hide, true);
+  window.addEventListener('resize', hide);
+})();
