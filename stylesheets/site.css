@@ -80,6 +80,143 @@ html, body {
   text-align: center;
 }
 
+/* Two-column layout only — below this the profile stacks above the content. */
+@media (min-width: 841px) {
+  .profile {
+    position: sticky;
+    top: 24px;
+  }
+}
+
+.mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin: 24px 0;
+  color: var(--accent);
+}
+
+.mark-dots {
+  width: 28px;
+  height: 15px;
+  display: block;
+}
+
+.mark-phrase {
+  position: relative;
+  display: inline-block;
+}
+
+.mark-words {
+  display: flex;
+  gap: 9px;
+  font-size: 10.5px;
+  line-height: 14px;
+  letter-spacing: 1.7px;
+  color: var(--text);
+}
+
+/* Sits on top of the three words and takes over once they are all lit, so the
+   line resolves into what the dots actually mean. Absolute, so no reflow. */
+.mark-therefore {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 10.5px;
+  line-height: 14px;
+  letter-spacing: 1.7px;
+  color: var(--text);
+  opacity: 0;
+}
+
+.mark-words,
+.mark-therefore {
+  animation-duration: 5.3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.mark-words { animation-name: mark-swap-out; }
+.mark-therefore { animation-name: mark-swap-in; }
+
+@keyframes mark-swap-out {
+  0%, 51.3% { opacity: 1; }
+  57%, 87.2% { opacity: 0; }
+  94.7%, 100% { opacity: 1; }
+}
+
+@keyframes mark-swap-in {
+  0%, 51.3% { opacity: 0; }
+  57%, 87.2% { opacity: 1; }
+  94.7%, 100% { opacity: 0; }
+}
+
+/* Each dot runs the same keyframes as its word — top dot with observe, lower
+   left with think, lower right with act. The cycle opens with observe lit,
+   think joins at 960ms, act at 1920ms. The complete phrase sits for 800ms,
+   cross-fades to "therefore" over 2720-3020ms and holds it to 4620ms, then
+   everything releases by 5020ms and observe comes back up as the cycle
+   repeats at 5.3s. */
+.mark-dot,
+.mark-word {
+  opacity: 0.3;
+  animation-duration: 5.3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.mark-dot {
+  fill: currentColor;
+}
+
+.mark-dot:nth-of-type(1),
+.mark-word:nth-of-type(1) { animation-name: mark-step-1; }
+
+.mark-dot:nth-of-type(2),
+.mark-word:nth-of-type(2) { animation-name: mark-step-2; }
+
+.mark-dot:nth-of-type(3),
+.mark-word:nth-of-type(3) { animation-name: mark-step-3; }
+
+@keyframes mark-step-1 {
+  0%, 87.2% { opacity: 1; }
+  94.7%, 97.4% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes mark-step-2 {
+  0%, 12.8% { opacity: 0.3; }
+  18.1% { opacity: 1; }
+  87.2% { opacity: 1; }
+  94.7% { opacity: 0.3; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes mark-step-3 {
+  0%, 30.9% { opacity: 0.3; }
+  36.2% { opacity: 1; }
+  87.2% { opacity: 1; }
+  94.7% { opacity: 0.3; }
+  100% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark-dot,
+  .mark-word {
+    animation: none;
+    opacity: 1;
+  }
+
+  /* Hold the three words; "therefore" stays hidden rather than stacking. */
+  .mark-words,
+  .mark-therefore {
+    animation: none;
+  }
+}
+
 .content {
   min-width: 0;
 }
@@ -649,7 +786,6 @@ img.rounded {
 .title-line {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 12px;
 }
 
 .email {
@@ -675,7 +811,8 @@ img.rounded {
 }
 
 .social-media {
-  margin-top: 10px;
+  /* The mark above owns this gap, so its margins read as symmetric. */
+  margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
