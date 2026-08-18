@@ -32,7 +32,7 @@
         } catch (e) {}
       })();
     </script>
-    <link href="/stylesheets/site.css?v=20260815s" rel="stylesheet" />
+    <link href="/stylesheets/site.css?v=20260818a" rel="stylesheet" />
     <script src="/javascripts/stories.js?v=20260515e" defer></script>
     <script src="/javascripts/site.js?v=20260515f" defer></script>
   </head>
@@ -115,8 +115,8 @@
           <div class="education-line">
             BITS Pilani (2014) | Postgrad ML Fellow, Plaksha (2021)
           </div>
-          <p>
-            Business-oriented product builder with 10+ years of diverse work-ex - software, design, product roles. 
+          <p class="intro-lede">
+            Business-oriented product builder with 10+ years of diverse work-ex - software, design, product roles.
           </p>
           <p>               
             Last role - Founding PM building an AI recruiter at <a href="https://expertia.ai/" target="_blank" rel="noopener noreferrer">Expertia AI</a> (pre-Series A), growing the platform from 2M to 30M candidates over 2 years, led enterprise implementation for 500+ recruiters at the Reliance group, winning a successful renewal. 
@@ -161,9 +161,9 @@
           <section class="section">
             <h2 class="section-title">Selected impact</h2>
             <ul>
-              <li>Scaled from 2M to 30M candidates in ~2 years at Expertia.</li>
+              <li>Scaled from <strong>2M to 30M candidates</strong> in ~2 years at Expertia.</li>
               <li>
-                Led enterprise implementation for 500+ recruiters at Reliance with a successful renewal. Also,
+                Led enterprise implementation for <strong>500+ recruiters at Reliance</strong> with a successful renewal. Also,
                 <span class="sticky-tooltip" tabindex="0">
                   highly sticky.
                   <span class="sticky-tooltip__content">
@@ -173,20 +173,38 @@
                   </span>
                 </span>
               </li>
-              <li>Shipped AI features across <a href="https://youtu.be/chn3Y4s31lU" target="_blank" rel="noopener noreferrer">voice calling</a>, resume screening, agentic chat with candidate profile, and interview assistance.</li>
-              <li>Built growth and GTM systems from scratch: analytics, activation, CRM, and ads (100K+ USD topline contribution).</li>
+              <li><strong>Shipped AI features</strong> across <a href="https://youtu.be/chn3Y4s31lU" target="_blank" rel="noopener noreferrer">voice calling</a>, resume screening, agentic chat with candidate profile, and interview assistance.</li>
+              <li>Built growth and GTM systems from scratch: analytics, activation, CRM, and ads (<strong>100K+ USD topline contribution</strong>).</li>
             </ul>
           </section>
 
           <section class="section">
             <h2 class="section-title">How I AI</h2>
-            <ul>
-              <li>Building <a href="https://silent-mind.com/" target="_blank" rel="noopener noreferrer">Ek-ai</a> (short for ekagra ai) as a side project - a proactive agent for Indian business operators. Reads WhatsApp, Gmail, and Calendar, with a deep contextual awareness of the business, then emails a morning brief: the 3 things that matter today. Runs unattended on the operator's own Claude or ChatGPT subscription with data staying private. Every run posts a PostHog event - read-through rate and the done-vs-skip ratio on the items in the brief as the feedback loops. Currently piloting with FnF.</li>
-              <li>Built a <a class="video-link" data-video="hcM5xCPWfbA" href="https://youtu.be/hcM5xCPWfbA" target="_blank" rel="noopener noreferrer">weekly AI coach</a> that I have been using consistently <span class="stat">12+ weeks in</span>. Started off as an accountability partner of sorts, but now it proposes why I am stuck on some things as a hypothesis, designs small experiments against the blocker, tracks which nudges actually got me to act, and reads my energy before setting next week's load. Three inputs - annual charter, daily journal, weekly plan. <a href="https://github.com/sidjainn/ai-chief-of-staff/blob/main/.claude/skills/weekly-coach/SKILL.md" target="_blank" rel="noopener noreferrer">Open-source skill</a>.</li>
-              <li>An AI-assisted <a class="video-link" data-video="N4JE-jT3VMM" href="https://youtu.be/N4JE-jT3VMM" target="_blank" rel="noopener noreferrer">system of insights</a> from my daily journaling. <a href="https://github.com/sidjainn/daily-logs-sync" target="_blank" rel="noopener noreferrer">Implementation</a> backs up Google Docs entries to GitHub, LLM-tags them for mood/ emotions/ people/ themes, emails them back as echoes from 1/ 3/ 6/ 12 months ago, and streams to PostHog for pattern-spotting. Completely free-of-cost to run. <span class="stat">180+ days of journaling streak</span></li>
-              <li>A <a href="https://github.com/sidjainn/ai-chief-of-staff/tree/main/.claude/skills/job-research" target="_blank" rel="noopener noreferrer">job researcher</a> for opportunities I choose to pursue - it does not scout roles. Agents research into the company, role, comp, and interviewers, contrast the opportunity against my interests and background. Everything lands in one composite thread per opportunity: each new conversation, call, or Granola note appends a dated update rather than overwriting, so the doc holds the whole arc via <a href="https://github.com/sidjainn/ai-chief-of-staff/tree/main/.claude/skills/update-job" target="_blank" rel="noopener noreferrer">job update</a> agent.</li>
-              <li><a href="https://github.com/sidjainn/inbox-0" target="_blank" rel="noopener noreferrer">Inbox-0</a>, a Claude-native triage app. Claude reads the inbox, decides what needs me, and drafts replies in my voice; a zero-dependency local server renders each one as a card; I click Send via SMTP. Simple workflows surface out follow-ups where a reply is owed, cold outreach, unanswered invite - each with its own silence window and a cap on how many times it may nudge. Cleared cards prune themselves a week later; anything still pending is never touched. Headless CRM system of sorts experiment.</li>
-              <li>I love Granola but their free plan hides notes >30 days old. So I built a <a href="https://github.com/sidjainn/granola-for-free" target="_blank" rel="noopener noreferrer">system</a> that pulls every meeting - notes, summary, transcript, attendees - and mirrors Granola's own folder structure into a private GitHub repo, auto-syncing daily. I chat with my themed notes from Claude or ChatGPT through the GitHub connector, so past meetings stay queryable instead of expiring.</li>
+            <ul class="skim-list">
+              <li>
+                <span class="lede">Building <a href="https://silent-mind.com/" target="_blank" rel="noopener noreferrer">Ek-ai</a> - a proactive agent that emails Indian business operators the 3 things that matter today.</span>
+                <span class="detail">Short for ekagra ai, built as a side project. Reads WhatsApp, Gmail, and Calendar, with a deep contextual awareness of the business, then sends the morning brief. Runs unattended on the operator's own Claude or ChatGPT subscription with data staying private. Every run posts a PostHog event - read-through rate and the done-vs-skip ratio on the items in the brief as the feedback loops. Currently piloting with FnF.</span>
+              </li>
+              <li>
+                <span class="lede">Built a <a class="video-link" data-video="hcM5xCPWfbA" href="https://youtu.be/hcM5xCPWfbA" target="_blank" rel="noopener noreferrer">weekly AI coach</a> that diagnoses why I get stuck, not just that I do. <span class="stat">12+ weeks in</span></span>
+                <span class="detail">Started off as an accountability partner of sorts, but now it proposes why I am stuck on some things as a hypothesis, designs small experiments against the blocker, tracks which nudges actually got me to act, and reads my energy before setting next week's load. Three inputs - annual charter, daily journal, weekly plan. <a href="https://github.com/sidjainn/ai-chief-of-staff/blob/main/.claude/skills/weekly-coach/SKILL.md" target="_blank" rel="noopener noreferrer">Open-source skill</a>.</span>
+              </li>
+              <li>
+                <span class="lede">An AI-assisted <a class="video-link" data-video="N4JE-jT3VMM" href="https://youtu.be/N4JE-jT3VMM" target="_blank" rel="noopener noreferrer">system of insights</a> from my daily journaling. <span class="stat">180+ days streak</span></span>
+                <span class="detail"><a href="https://github.com/sidjainn/daily-logs-sync" target="_blank" rel="noopener noreferrer">Implementation</a> backs up Google Docs entries to GitHub, LLM-tags them for mood/ emotions/ people/ themes, emails them back as echoes from 1/ 3/ 6/ 12 months ago, and streams to PostHog for pattern-spotting. Completely free-of-cost to run.</span>
+              </li>
+              <li>
+                <span class="lede">A <a href="https://github.com/sidjainn/ai-chief-of-staff/tree/main/.claude/skills/job-research" target="_blank" rel="noopener noreferrer">job researcher</a> for opportunities I choose to pursue - it does not scout roles.</span>
+                <span class="detail">Agents research into the company, role, comp, and interviewers, contrast the opportunity against my interests and background. Everything lands in one composite thread per opportunity: each new conversation, call, or Granola note appends a dated update rather than overwriting, so the doc holds the whole arc via <a href="https://github.com/sidjainn/ai-chief-of-staff/tree/main/.claude/skills/update-job" target="_blank" rel="noopener noreferrer">job update</a> agent.</span>
+              </li>
+              <li>
+                <span class="lede"><a href="https://github.com/sidjainn/inbox-0" target="_blank" rel="noopener noreferrer">Inbox-0</a>, a Claude-native triage app that reads the inbox, decides what needs me, and drafts replies in my voice.</span>
+                <span class="detail">A zero-dependency local server renders each one as a card; I click Send via SMTP. Simple workflows surface out follow-ups where a reply is owed, cold outreach, unanswered invite - each with its own silence window and a cap on how many times it may nudge. Cleared cards prune themselves a week later; anything still pending is never touched. Headless CRM system of sorts experiment.</span>
+              </li>
+              <li>
+                <span class="lede">A <a href="https://github.com/sidjainn/granola-for-free" target="_blank" rel="noopener noreferrer">system</a> that mirrors every Granola meeting into a private GitHub repo, auto-syncing daily.</span>
+                <span class="detail">I love Granola but their free plan hides notes >30 days old. So this pulls every meeting - notes, summary, transcript, attendees - and mirrors Granola's own folder structure. I chat with my themed notes from Claude or ChatGPT through the GitHub connector, so past meetings stay queryable instead of expiring.</span>
+              </li>
             </ul>
           </section>
 
