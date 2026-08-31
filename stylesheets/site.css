@@ -766,15 +766,11 @@ img.rounded {
   margin: 0 0 10px 0;
 }
 
-/* The role is the anchor. The tagline sits under it as the qualifier, so the
-   eye lands on one before reading the other. */
+/* Same line and same colour as the role, carried lighter so the role still
+   reads as the anchor. */
 .heading-tagline {
-  display: block;
-  font-size: 20px;
-  line-height: 28px;
   font-weight: 400;
-  color: var(--accent);
-  margin-top: 2px;
+  opacity: 0.7;
 }
 
 .education-line {
