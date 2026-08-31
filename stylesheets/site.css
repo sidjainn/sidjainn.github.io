@@ -779,13 +779,6 @@ img.rounded {
 
 /* Skim layer. A visitor who reads only the large lines should still get the
    whole story; the detail underneath is there for the second pass. */
-.intro-lede {
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 500;
-  margin-bottom: 14px;
-}
-
 .lede {
   display: block;
   font-size: 17px;
