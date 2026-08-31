@@ -766,13 +766,6 @@ img.rounded {
   margin: 0 0 10px 0;
 }
 
-/* Same line and same colour as the role, carried lighter so the role still
-   reads as the anchor. */
-.heading-tagline {
-  font-weight: 400;
-  opacity: 0.7;
-}
-
 .education-line {
   color: var(--accent);
   font-weight: 500;
