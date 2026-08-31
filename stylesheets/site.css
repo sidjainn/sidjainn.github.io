@@ -766,6 +766,17 @@ img.rounded {
   margin: 0 0 10px 0;
 }
 
+/* The role is the anchor. The tagline sits under it as the qualifier, so the
+   eye lands on one before reading the other. */
+.heading-tagline {
+  display: block;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--text);
+  margin-top: 4px;
+}
+
 .education-line {
   color: var(--accent);
   font-weight: 500;
