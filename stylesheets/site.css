@@ -864,6 +864,8 @@ img.rounded {
 
 .section {
   margin-top: 30px;
+  /* Breathing room when a shared #section link scrolls here. */
+  scroll-margin-top: 24px;
 }
 
 .section-title {

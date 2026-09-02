@@ -530,3 +530,20 @@
   window.addEventListener('scroll', hide, true);
   window.addEventListener('resize', hide);
 })();
+
+/* Shareable links. #how-i-ai and #shape-of-work scroll on their own.
+   #resume downloads the PDF and leaves the visitor on the homepage. */
+(function () {
+  var RESUME_URL = 'https://drive.google.com/uc?export=download&id=1fMnTC6_p7BLP6cyzfP2PfacA3K_P1hFA';
+  if (window.location.hash !== '#resume') return;
+
+  // Drop the hash so the URL reads as the plain homepage and a reload does not download again.
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+
+  // The file is served as an attachment, so loading it in a hidden frame
+  // starts the download and never navigates the homepage away.
+  var frame = document.createElement('iframe');
+  frame.hidden = true;
+  frame.src = RESUME_URL;
+  document.body.appendChild(frame);
+})();
