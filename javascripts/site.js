@@ -130,6 +130,10 @@
   // Seen is keyed by content fingerprint so editing the array doesn't carry stale "seen" marks.
   var SEEN_KEY = 'stories.seen.v2';
 
+  function emit(name, detail) {
+    document.dispatchEvent(new CustomEvent(name, { detail: detail || {} }));
+  }
+
   function fingerprint(story) {
     return story.type + '|' + (story.src || story.embed || story.url || story.question || '');
   }
@@ -294,6 +298,11 @@
           votes[i] = (votes[i] || 0) + 1;
           try { localStorage.setItem(pollKey, JSON.stringify(votes)); } catch (e3) {}
           renderVotes(i);
+          emit('site:story-poll-vote', {
+            question: story.question || '',
+            option: label,
+            optionIndex: i
+          });
           paused = true;
           pauseProgress();
         });
@@ -363,7 +372,7 @@
   }
 
   function go(nextIdx) {
-    if (nextIdx >= STORIES.length) { close(); return; }
+    if (nextIdx >= STORIES.length) { close('completed'); return; }
     if (nextIdx < 0) nextIdx = 0;
     markSeen(nextIdx);
 
@@ -408,6 +417,14 @@
     idx = nextIdx;
     paused = false;
     scheduleAdvance(dur);
+
+    emit('site:story-slide', {
+      index: nextIdx,
+      total: STORIES.length,
+      type: story.type,
+      key: fingerprint(story),
+      slide: slide
+    });
   }
 
   function open(startAt) {
@@ -421,10 +438,16 @@
     }
     viewer.hidden = false;
     document.body.style.overflow = 'hidden';
+    emit('site:story-open', { total: STORIES.length });
     go(typeof startAt === 'number' ? startAt : 0);
   }
 
-  function close() {
+  function close(reason) {
+    emit('site:story-close', {
+      index: idx,
+      total: STORIES.length,
+      reason: reason === 'completed' ? 'completed' : 'dismissed'
+    });
     clearTimers();
     viewer.hidden = true;
     document.body.style.overflow = '';
