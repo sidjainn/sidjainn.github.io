@@ -53,17 +53,20 @@
         capture_performance: { web_vitals: true },
         session_recording: { maskAllInputs: true },
         loaded: function (ph) {
-          // Keeps local testing out of the real numbers. Filter on `environment` in PostHog.
-          var host = window.location.hostname;
-          var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || host === '[::1]';
-          ph.register({ environment: isLocal ? 'dev' : 'prod' });
+          // Only the real domain counts as production. Everything else is dev:
+          // any localhost port, a LAN IP used for phone testing, a tunnel, a
+          // preview host. An allowlist cannot miss a case a denylist forgot.
+          // hostname never includes the port, so ports are irrelevant here.
+          // Filter on `environment` in PostHog.
+          var isProd = window.location.hostname === 'sidjainn.github.io';
+          ph.register({ environment: isProd ? 'prod' : 'dev' });
         }
       });
     </script>
     <link href="/stylesheets/site.css?v=20260818f" rel="stylesheet" />
     <script src="/javascripts/stories.js?v=20260515e" defer></script>
-    <script src="/javascripts/analytics.js?v=20260903c" defer></script>
-    <script src="/javascripts/site.js?v=20260903c" defer></script>
+    <script src="/javascripts/analytics.js?v=20260903d" defer></script>
+    <script src="/javascripts/site.js?v=20260903d" defer></script>
   </head>
 
   <body>
