@@ -109,6 +109,7 @@
       if (href.indexOf('linkedin.com') !== -1) channel = 'linkedin';
       else if (href.indexOf('github.com') !== -1) channel = 'github';
       else if (href.indexOf('x.com') !== -1) channel = 'x';
+      else if (href.indexOf('substack.com') !== -1) channel = 'substack';
     } else if (a.closest('.footer-cta') && href.indexOf('linkedin.com') !== -1) {
       channel = 'linkedin';
     }
