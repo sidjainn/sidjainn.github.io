@@ -225,6 +225,31 @@
     });
   })();
 
+  /* ---- Slow first paint ------------------------------------------------ */
+
+  // Web vitals give FCP but not where the time went. When first paint is
+  // slow, send the network timings too. A large ttfb_ms means the network
+  // was slow, not the page.
+  (function () {
+    if (!('PerformanceObserver' in window)) return;
+    try {
+      new PerformanceObserver(function (list) {
+        list.getEntries().forEach(function (e) {
+          if (e.name !== 'first-contentful-paint' || e.startTime < 3000) return;
+          var nav = performance.getEntriesByType('navigation')[0];
+          if (!nav) return;
+          track('slow_first_paint', {
+            fcp_ms: Math.round(e.startTime),
+            ttfb_ms: Math.round(nav.responseStart),
+            dns_ms: Math.round(nav.domainLookupEnd - nav.domainLookupStart),
+            connect_ms: Math.round(nav.connectEnd - nav.connectStart),
+            html_done_ms: Math.round(nav.responseEnd)
+          });
+        });
+      }).observe({ type: 'paint', buffered: true });
+    } catch (e) {}
+  })();
+
   /* ---- Stories --------------------------------------------------------- */
 
   // site.js dispatches these. The whole player is built in JS inside a modal,
